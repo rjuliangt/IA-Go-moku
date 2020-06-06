@@ -9,6 +9,10 @@ app = Flask(__name__)
 def inicio():
     return render_template('index.html')
 
+@app.route('/play_game', methods=['GET'])
+def play_game():
+    return render_template('board.html')
+
 @app.route('/move_player', methods=['GET'])
 def move_player():
     return jsonify({"Juagador": "Movida"})

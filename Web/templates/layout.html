@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=divice-width, initial-scale=1.0">
     <title>Go Moku</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico')}}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="{{ url_for('static', filename='Style/allstyle.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/allstyle.css')}}">
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
@@ -16,11 +16,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Play</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/play_game">Play</a>
+                <a class="nav-link " href="/game_rules">Rules</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,7 +29,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Roberto Guti&eacute;rrez</a>
                     <a class="dropdown-item" href="#">Carlos Venancio</a>
-                    <a class="dropdown-item" href="#">Nohem&iacute;</a>
+                    <a class="dropdown-item" href="#">Nohelia</a>
                 </div>
             </li>
         </ul>

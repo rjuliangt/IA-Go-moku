@@ -4,14 +4,15 @@ app = Flask(__name__)
 
 
 # ROUTER OF DE PAGE WEB METHODS GET
+
 @app.route('/', methods=['GET'])
-def inicio():
-    return render_template('index.html')
-
-
-@app.route('/play_game', methods=['GET'])
 def play_game():
     return render_template('board.html')
+
+
+@app.route('/game_rules', methods=['GET'])
+def game_rules():
+    return render_template('rules.html')
 
 
 @app.route('/move_player', methods=['GET'])

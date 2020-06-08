@@ -31,6 +31,14 @@ def player_move():
     return jsonify({"Juagador": ""})
 
 
+@app.route('/api/get_move', methods=['POST'])
+def get_move():
+    """
+    :return:move action API
+    """
+    pass
+
+
 # RUN SERVER FLASK
 if __name__ == '__main__':
     # app.run(port = 3000, debug = True) UNA MANERA MAS DE ESTABLECER UN PUERTO ESPECIFICO

@@ -3,23 +3,26 @@
 
 
 <div class="container mar-top">
+<!--    CONTENIDO DEL TABLERO Y EL TEXTO QUE LO DESCRIBE-->
     <div class="row justify-content-center ">
+<!--        SE PINTA EL TABLERO-->
         <div class="col-sm-6 " >
-            <table class="table table-bordered table-sm table-dark text-center" style="margin-top: 4px">
+            <table class="table table-bordered table-sm table-dark text-center" style="margin-top: 25px">
                 <thead>
                 </thead>
                 <tbody>
                 <!--Crearemos un for para mostrar el tablero-->
                 {% for n in range(1,19) %}
-                <tr >
-                    {% for n in range(1,19) %}
-                    <th scope="col" style="color: #343a40">. </th>
+                <tr id="{{ n }}" style="height: 25px">
+                    {% for m in range(1,19) %}
+                    <th id="{{ m }}" scope="col" style="width: 25px;" > </th>
                     {% endfor %}
                 </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
+<!--        SE PINTA LA DESCRIPCION-->
         <div class="col-sm-3 text-left">
             <div class="row">
                 <div class="col-sm-12"><br>
@@ -47,12 +50,9 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-12">
                     <button type="button" class="btn btn-primary">Empezar</button>
-                </div>
-                <br>
-                <div class="col-sm-8">
-                    <button type="button" class="btn btn-danger">Reiniciar</button>
+                    <button type="button" class="btn btn-danger" style="margin-left: 10px">Reiniciar</button>
                 </div>
             </div>
         </div>

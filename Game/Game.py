@@ -6,7 +6,7 @@ from Game.BoardRenderer import BoardRenderer
 
 def start_until_game_over(player1: Player, player2: Player, board_renderer: BoardRenderer = None):
     """
-    
+
     :param player1:
     :param player2:
     :param board_renderer:

@@ -127,7 +127,6 @@ class IA_MCTS_Net(MonteCarloTreeSearch, Player):
 
             board.step(action)
 
-            # 重置根节点。 Reset the root node.
             if action in self.root.children:
                 self.root = self.root.children[action]
                 self.root.parent = None

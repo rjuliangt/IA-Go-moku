@@ -1,2 +1,1 @@
-from torchvision import models
 

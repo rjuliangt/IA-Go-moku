@@ -188,4 +188,3 @@ class PolicyValueNet_from_junxiaosong(Network):
         probs, _ = self.model.predict_on_batch(board_input)
 
         return -np.mean(np.sum(probs * np.log(probs + 1e-10), axis=1))
-

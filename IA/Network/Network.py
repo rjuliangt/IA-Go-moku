@@ -12,7 +12,6 @@ class Network(metaclass=ABCMeta):
     @abstractmethod
     def train(self, x_label, y_label):
         """
-
        :param x_label:
        :param y_label:
        :return:

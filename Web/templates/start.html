@@ -16,11 +16,11 @@
         <br><br>
         <div id="board-div" style="height: {{ board_size*40 }}px">
             <canvas id="board" width="{{ board_size*40 }}px" height="{{ board_size*40 }}px">
-                浏览器不支持 canvas </canvas>
+                canvas </canvas>
             <canvas id="transparent-board" width="{{ board_size*40 }}px" height="{{ board_size*40 }}px"
                     onmousemove="mouse_move_on_canvas(event)" onclick="mouse_click_on_canvas(event)"
                     onmouseout="mouse_out_on_canvas()">
-                浏览器不支持 canvas </canvas>
+                canvas </canvas>
         </div>
 
         <br><br>
@@ -29,22 +29,22 @@
         <br><br>
 
         <div id="player1-div">
-            <h4>执黑 Black: {{ player1_name }}</h4>
+            <h4>Black: {{ player1_name }}</h4>
             <p id="player1-desc">
                 {% autoescape false %}
                 {{ player1_desc | replace('\n', '<br>') }}
                 {% endautoescape %}
             </p>
-            <h4 id="player1-running">思考中 running...</h4>
+            <h4 id="player1-running">running...</h4>
         </div>
         <div id="player2-div">
-            <h4>执白 White: {{ player2_name }}</h4>
+            <h4>White: {{ player2_name }}</h4>
             <p id="player2-desc">
                 {% autoescape false %}
                 {{ player2_desc | replace('\n', '<br>') }}
                 {% endautoescape %}
             </p>
-            <h4 id="player2-running">思考中 running...</h4>
+            <h4 id="player2-running">running...</h4>
         </div>
     </div>
 

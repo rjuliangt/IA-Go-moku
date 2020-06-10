@@ -33,10 +33,6 @@ do
     continue
     ;;
   3)
-#    export FLASK_APP=Web/__init__.py
-#    export FLASK_ENV=production
-#    export FLASK_DEBUG=0
-#    python -m flask run --host "0.0.0.0"
     python3 start_from_web.py
     continue
     ;;

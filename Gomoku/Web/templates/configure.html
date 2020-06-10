@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome to Omega Gomoku AI.</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <script src="{{ url_for('static', filename='js/configure.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/configure.css') }}">
-</head>
-<body>
+{% extends 'welcome.html' %}
+{% block body %}
     <div style="text-align: center;">
-        <h1>Welcome to Omega Gomoku AI.</h1><br>
-
+        <h1>Welcome to Gomoku AI.</h1><br>
         {% macro rows(section) %}
             <div id="select{{ section }}-1">
                 <h4 id="select{{ section }}-1-title">
@@ -18,7 +9,6 @@
                 <label>It's name is:
                     <input type="text" id="select{{ section }}-1-input" name="select{{ section }}-1" value="player {{ section }}" required></label><br>
             </div>
-
             <div id="select{{ section }}-2">
                 <h4 id="select{{ section }}-2-title">
                     {{ section }}-2. 1：search times. (times >= 1)<br>
@@ -41,13 +31,10 @@
             </div>
             <div id="select{{ section }}-5">
                 <h4 id="select{{ section }}-5-title">... Loading...</h4>
-{#                <label><input type="radio" id="select{{ section }}-5-input" onclick="sel({{ section }}, 5, 1)" name="select{{ section }}-5" value="1">#}
-{#                    </label><br>#}
             </div>
             <div id="select{{ section }}-6">
                 <h4 id="select{{ section }}-6-title">... Loading...</h4>
-{#                <label><input type="radio" id="select{{ section }}-6-input" onclick="sel({{ section }}, 6, 1)" name="select{{ section }}-6" value="1">#}
-{#                    </label><br>#}
+
             </div>
         {% endmacro %}
 
@@ -80,10 +67,8 @@
                 {{ rows(2) }}
 
             </div><br>
-
             <input type="submit" value="Run.">
         </form>
 
     </div>
-</body>
-</html>
+{% endblock %}

@@ -1,4 +1,4 @@
-from AI.Network.Network import Network
+from IA.Network.Network import Network
 
 import numpy as np
 import tensorflow as tf

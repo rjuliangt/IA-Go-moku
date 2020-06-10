@@ -1,0 +1,5 @@
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: gunicorn -k flask_sockets.worker app.Web.web_start:app

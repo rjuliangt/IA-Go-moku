@@ -1,0 +1,41 @@
+
+#board {
+    background: darkslategray;
+    background: -webkit-linear-gradient(to right, #859398, #283048);
+    border-radius: 5px;
+}
+
+#player1-div {
+    text-align: center;
+    background: white;
+    border-radius: 15px;
+}
+
+#player2-div {
+    text-align: center;
+    background: white;
+    border-radius: 15px;
+}
+
+#board-div {
+    position: relative;
+}
+
+#board {
+    position: absolute;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+    z-index: 0;
+}
+
+#transparent-board {
+    position: absolute;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+    z-index: 1;
+}
+
+#player1-running, #player2-running {
+    display: none;
+}
+

@@ -2,4 +2,4 @@ gunicorn
 flask
 flask_socketio
 numpy
-Flask-Sockets==0.2.0
+

@@ -19,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link " href="/game_rules">Rules</a>
+                <a class="nav-link " href="rules">Rules</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,7 +37,7 @@
     <div class="container mar-top">
     <div class="row justify-content-center ">
         <div class="col-sm-9 " >
-            <div class="table table-bordered table-sm table-dark" id="board-div" style="height: {{ board_size*40 }}px">
+            <div  id="board-div" style="height: {{ board_size*40 }}px">
                 <canvas id="board" width="{{ board_size*40 }}px" height="{{ board_size*40 }}px">
                     canvas </canvas>
                 <canvas id="transparent-board" width="{{ board_size*40 }}px" height="{{ board_size*40 }}px"
@@ -53,31 +53,10 @@
                     <h4 class="text-white text-center text-primary " > (19 x 19)</h4>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <button type="button" class="btn btn-primary">Empezar</button>
-                    <button type="button" class="btn btn-danger" style="margin-left: 10px">Reiniciar</button>
-                </div>
-            </div>
             <br>
             <br>
             <div class="row">
-                <div class="col-sm-6">
-                    <h5 class="text-white text-left text-success"><strong>Jugador:</strong></h5>
-                </div>
-                <div class="col-sm-6">
-                    <h5 class="text-white text-left text-white-50"><strong>0</strong></h5>
-                </div><br>
-                <div class="col-sm-6">
-                    <h5 class="text-white text-warning"> <strong>CPU:</strong></h5>
-                </div>
-                <div class="col-sm-6">
-                    <h5 class="text-white text-left text-white-50"><strong>0</strong></h5>
-                </div><br>
-            </div>
-            <br>
-            <div class="row">
-                <div class="container">
+                <div class="col-md-auto">
                     <a href="{{ url_for('configure.configure') }}">
                         <input class="btn btn-primary" type="button" value="Back"></a>
                     <input class="btn btn-danger" id="start-button" type="button" value=" Start" onclick="start_game()">

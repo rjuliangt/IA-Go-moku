@@ -1,6 +1,6 @@
 
 #board {
-    background: burlywood;
+    background: darkslategray;
     background: -webkit-linear-gradient(to right, #859398, #283048);
     border-radius: 5px;
 }
@@ -17,7 +17,7 @@
 #player2-div {
     float: left;
     margin-left: 22%;
-    margin-right: 15%;
+    margin-right: 5%;
     text-align: center;
     background: white;
     border-radius: 15px;

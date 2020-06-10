@@ -2,5 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: gunicorn --pythonpath app Web:init
-
+  web: gunicorn --pythonpath app Web.wsgi

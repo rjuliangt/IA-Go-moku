@@ -5,9 +5,12 @@ import random
 
 import numpy as np
 
-from Gomoku.IA.Network.PolicyValueNet_from_junxiaosong import PolicyValueNet_from_junxiaosong, data_augmentation_new
-from Gomoku.Game import start_until_game_over
-from Gomoku.console_select import select_yes_or_no
+import Game.Board as BOARD
+from IA.Network.PolicyValueNet_from_junxiaosong import PolicyValueNet_from_junxiaosong, data_augmentation_new
+from Game.Game import start_until_game_over
+from Player.IA_MCTS import IA_MCTS
+from Player.IA_MCTS_Net import IA_MCTS_Net
+from console_select import select_yes_or_no
 
 
 def train_with_net_junxiaosong(network: PolicyValueNet_from_junxiaosong, allow_user_input=True, round_times=0):
@@ -165,17 +168,17 @@ def train_with_net_junxiaosong(network: PolicyValueNet_from_junxiaosong, allow_u
                 for j in range(10):
                     if j % 2 == 0:
                         winner = start_until_game_over(training_mcts, pure_mcts)
-                        if winner == Board.o:
+                        if winner == BOARD.o:
                             win_times += 1
-                        elif winner == Board.x:
+                        elif winner == BOARD.x:
                             lose_times += 1
                         else:
                             draw_times += 1
                     else:
                         winner = start_until_game_over(pure_mcts, training_mcts)
-                        if winner == Board.x:
+                        if winner == BOARD.x:
                             win_times += 1
-                        elif winner == Board.o:
+                        elif winner == BOARD.o:
                             lose_times += 1
                         else:
                             draw_times += 1

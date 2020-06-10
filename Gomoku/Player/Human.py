@@ -1,5 +1,5 @@
-from Gomoku.Game import Board
-from Gomoku.Player import Player
+from Game.Board import Board
+from Player.Player import Player
 
 
 class Human(Player):

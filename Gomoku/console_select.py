@@ -1,8 +1,8 @@
 import pathlib
 
-from Gomoku.configure import Configure
-from Gomoku.IA.Network.PolicyValueNet_from_junxiaosong import PolicyValueNet_from_junxiaosong
-from Gomoku.IA.Network.PolicyValueNet_ResNet import PolicyValueNet_ResNet
+from configure import Configure
+from IA.Network.PolicyValueNet_from_junxiaosong import PolicyValueNet_from_junxiaosong
+from IA.Network.PolicyValueNet_ResNet import PolicyValueNet_ResNet
 
 
 def select(prompt, allowed_input):

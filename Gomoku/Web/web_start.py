@@ -1,7 +1,8 @@
-from flask import Blueprint, redirect, render_template, url_for
+from flask import Blueprint, redirect, render_template, request, jsonify, url_for
 from flask_socketio import SocketIO
-from Gomoku.Web import web_configure
-from Gomoku.Web import web_game_thread
+import Game.Board as BOARD
+from Web import web_configure
+from Web.web_game_thread import web_game_thread
 
 bp = Blueprint("start", __name__, url_prefix="/start")
 socket_io = SocketIO(async_mode="threading")
@@ -21,7 +22,7 @@ def start():
     if web_configure.player == {}:
         return redirect(url_for('configure.configure'))
     context = {
-        'board_size': Board.board_size,
+        'board_size': BOARD.board_size,
         'player1_name': web_configure.player[0].name,
         'player2_name': web_configure.player[1].name,
         'player1_desc': str(web_configure.player[0]),
@@ -66,7 +67,7 @@ def handle_action(action):
 
 
 def send_board_init():
-    socket_io.emit('board_init', Board.board_size)
+    socket_io.emit('board_init', BOARD.board_size)
 
 
 def send_game_start():
@@ -88,7 +89,7 @@ def send_board_step(current_player, action):
 
 
 def turn_to(player):
-    socket_io.emit('turn_to', 1 if player == Board.o else 2)
+    socket_io.emit('turn_to', 1 if player == BOARD.o else 2)
 
 
 def send_player1_running(output):
@@ -111,9 +112,9 @@ def wait_human_action(player, is_stop):
 
 
 def game_over(winner):
-    if winner == Board.o:
+    if winner == BOARD.o:
         socket_io.emit('game_over', 1)
-    elif winner == Board.x:
+    elif winner == BOARD.x:
         socket_io.emit('game_over', 2)
     else:
         socket_io.emit('game_over', 0)

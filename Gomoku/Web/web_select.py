@@ -1,6 +1,6 @@
 import pathlib
 
-from Gomoku.configure import Configure
+from configure import Configure
 
 
 class web_select:

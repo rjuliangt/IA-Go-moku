@@ -2,10 +2,11 @@ import numpy as np
 import copy
 import random
 
-from Gomoku.Game import Board
-from Gomoku.IA.TreeSearch import MonteCarloTreeSearch
-from Gomoku.IA.TreeNode import TreeNode
-from Gomoku.Player import Player
+from Game.Board import Board
+import Game.Board as BOARD
+from IA.TreeSearch import MonteCarloTreeSearch
+from IA.TreeNode import TreeNode
+from Player.Player import Player
 
 import time
 
@@ -52,24 +53,24 @@ class IA_MCTS(MonteCarloTreeSearch, Player):
         print("----------------------------\n"
               "IA： IA analysis:\n"
               " Format: [odds(%) | #calculations]")
-        print_array = [["" for _ in range(Board.board_size + 1)] for _ in range(Board.board_size + 1)]
+        print_array = [["" for _ in range(BOARD.board_size + 1)] for _ in range(BOARD.board_size + 1)]
 
-        index_string = [""] + [str(i) for i in range(Board.board_size)]
+        index_string = [""] + [str(i) for i in range(BOARD.board_size)]
 
         print_array[0] = index_string
-        for row in range(Board.board_size):
+        for row in range(BOARD.board_size):
             print_array[row + 1][0] = str(row)
 
-        for i in range(Board.board_size):
-            for j in range(Board.board_size):
+        for i in range(BOARD.board_size):
+            for j in range(BOARD.board_size):
                 if (i, j) in self.root.children:
                     visited_times = float(self.root.children[(i, j)].visited_times)
                     reward = float(self.root.children[(i, j)].reward)
                     print_array[i + 1][j + 1] = "{0:.1f}%".format(reward / visited_times * 100) + "|" + str(
                         int(visited_times)) if visited_times != 0 else 0
 
-        for i in range(Board.board_size + 1):
-            for j in range(Board.board_size + 1):
+        for i in range(BOARD.board_size + 1):
+            for j in range(BOARD.board_size + 1):
                 print("{:<15}".format(print_array[i][j]), end="")
             print("")
         print("----------------------------")

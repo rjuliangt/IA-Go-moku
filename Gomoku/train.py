@@ -1,10 +1,10 @@
 import sys
 
-from Gomoku.console_select import select_network
-from Gomoku.IA.Network.PolicyValueNet_ResNet import PolicyValueNet_ResNet
-from Gomoku.IA.Network.PolicyValueNet_from_junxiaosong import PolicyValueNet_from_junxiaosong
-from Gomoku.Train import train_with_net_junxiaosong
-from Gomoku.Train.train_with_resnet import train_with_resnet
+from console_select import select_network
+from IA.Network.PolicyValueNet_ResNet import PolicyValueNet_ResNet
+from IA.Network.PolicyValueNet_from_junxiaosong import PolicyValueNet_from_junxiaosong
+from Train.train_with_net_junxiaosong import train_with_net_junxiaosong
+from Train.train_with_resnet import train_with_resnet
 
 
 

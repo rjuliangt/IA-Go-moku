@@ -1,8 +1,8 @@
 import numpy as np
 
-from Gomoku.Game import BoardRenderer
-from Gomoku.Function import coordinates_set
-from Gomoku.configure import Configure
+from Game.BoardRenderer import BoardRenderer
+from Function import coordinates_set
+from configure import Configure
 
 
 conf = Configure()

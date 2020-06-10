@@ -1,6 +1,7 @@
-from Gomoku.Player import Player
-from Gomoku.Game import Board
-from Gomoku.Game import BoardRenderer
+from Player.Player import Player
+from Game.Board import Board
+import Game.Board as BOARD
+from Game.BoardRenderer import BoardRenderer
 
 
 def start_until_game_over(player1: Player, player2: Player, board_renderer: BoardRenderer = None):
@@ -16,7 +17,7 @@ def start_until_game_over(player1: Player, player2: Player, board_renderer: Boar
         if board_renderer is not None:
             board.render(board_renderer)
 
-        if board.current_player == Board.o:
+        if board.current_player == BOARD.o:
             player1.take_action(board, is_output_action=board_renderer is not None)
         else:
             player2.take_action(board, is_output_action=board_renderer is not None)

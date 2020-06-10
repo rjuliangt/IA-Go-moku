@@ -1,8 +1,9 @@
 import threading
 
-from Gomoku.Game import Board
-from Gomoku.Player import Player
-from Gomoku.Player import Human
+import Game.Board as BOARD
+from Game.Board import Board
+from Player.Player import Player
+from Player.Human import Human
 
 
 class web_game_thread(threading.Thread):
@@ -38,7 +39,7 @@ def play_web_game(is_stop, player1: Player, player2: Player, turn_to, send_board
     while not is_stop():
         turn_to(board.current_player)
 
-        if board.current_player == Board.o:
+        if board.current_player == BOARD.o:
             if isinstance(player1, Human):
                 action = wait_human_action(1, is_stop)
                 if is_stop():

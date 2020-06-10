@@ -1,11 +1,12 @@
-from Gomoku import Game as Game
-from Gomoku.Game import ConsoleRenderer
-from Gomoku.Player import IA_MCTS
-from Gomoku.Player import IA_MCTS_Net
+import Game.Board as BOARD
+import Game.Game as Game
+from Game.ConsoleRenderer import ConsoleRenderer
+from Player.IA_MCTS import IA_MCTS
+from Player.IA_MCTS_Net import IA_MCTS_Net
 
-from Gomoku.console_select import select_player, select_network, set_AI_conf
-from Gomoku.Player import Human
-from Gomoku.configure import Configure
+from console_select import select_player, select_network, set_AI_conf
+from Player.Human import Human
+from configure import Configure
 
 
 def start():
@@ -52,9 +53,9 @@ def start():
 
     print("--------------    Game Start    ---------------")
     winner = Game.start_until_game_over(player1, player2, board_renderer=console_renderer)
-    if winner == Board.o:
+    if winner == BOARD.o:
         print("！\"O\" Congrats! \"O\" wins.")
-    elif winner == Board.x:
+    elif winner == BOARD.x:
         print("！\"X\" Congrats! \"X\" wins.")
     else:
         print(" Draw!")

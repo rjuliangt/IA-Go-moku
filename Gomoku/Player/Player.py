@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from Gomoku.Game import Board
+from Game.Board import Board
 
 
 class Player(metaclass=ABCMeta):

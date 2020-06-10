@@ -1,10 +1,11 @@
 import numpy as np
 import copy
 
-from Gomoku.Game import Board
-from Gomoku.IA.TreeSearch import MonteCarloTreeSearch
-from Gomoku.IA.TreeNode import TreeNode
-from Gomoku.Player import Player
+from Game.Board import Board
+import Game.Board as BOARD
+from IA.TreeSearch import MonteCarloTreeSearch
+from IA.TreeNode import TreeNode
+from Player.Player import Player
 
 import time
 
@@ -65,7 +66,7 @@ class IA_MCTS_Net(MonteCarloTreeSearch, Player):
 
         flatten_actions = []
         for one_action in actions:
-            flatten_actions.append(one_action[0] * Board.board_size + one_action[1])
+            flatten_actions.append(one_action[0] * BOARD.board_size + one_action[1])
 
         if self.is_training:
             flatten_action = np.random.choice(flatten_actions,
@@ -74,12 +75,12 @@ class IA_MCTS_Net(MonteCarloTreeSearch, Player):
             flatten_action = np.random.choice(flatten_actions, p=probs)
 
         # flatten_action -> action
-        action = (flatten_action // Board.board_size, flatten_action % Board.board_size)
+        action = (flatten_action // BOARD.board_size, flatten_action % BOARD.board_size)
 
         board.step(action)
 
         if self.is_output_analysis:
-            action_probs = np.zeros((Board.board_size, Board.board_size))
+            action_probs = np.zeros((BOARD.board_size, BOARD.board_size))
             # probs -> action_probs
             for one_action, one_prob in zip(actions, probs):
                 action_probs[one_action[0], one_action[1]] = one_prob
@@ -104,7 +105,7 @@ class IA_MCTS_Net(MonteCarloTreeSearch, Player):
             self.run(board, self.search_times)
 
             actions, probs = self.get_action_probs(temp=temp)
-            action_probs = np.zeros((Board.board_size, Board.board_size))
+            action_probs = np.zeros((BOARD.board_size, BOARD.board_size))
 
             for action, prob in zip(actions, probs):
                 action_probs[action[0], action[1]] = prob
@@ -116,13 +117,13 @@ class IA_MCTS_Net(MonteCarloTreeSearch, Player):
             # action -> flatten_action
             flatten_actions = []
             for one_action in actions:
-                flatten_actions.append(one_action[0] * Board.board_size + one_action[1])
+                flatten_actions.append(one_action[0] * BOARD.board_size + one_action[1])
 
             flatten_action = np.random.choice(flatten_actions,
                                               p=0.75 * probs + 0.25 * np.random.dirichlet(0.3 * np.ones(len(probs))))
 
             # flatten_action -> action
-            action = (flatten_action // Board.board_size, flatten_action % Board.board_size)
+            action = (flatten_action // BOARD.board_size, flatten_action % BOARD.board_size)
 
             board.step(action)
 
@@ -164,23 +165,23 @@ class IA_MCTS_Net(MonteCarloTreeSearch, Player):
         print("----------------------------\n"
               "IA： IA analysis:\n"
               "Format: [Decision probability(%) | #calculations]")
-        print_array = [["" for _ in range(Board.board_size + 1)] for _ in range(Board.board_size + 1)]
+        print_array = [["" for _ in range(BOARD.board_size + 1)] for _ in range(BOARD.board_size + 1)]
 
-        index_string = [""] + [str(i) for i in range(Board.board_size)]
+        index_string = [""] + [str(i) for i in range(BOARD.board_size)]
 
         print_array[0] = index_string
-        for row in range(Board.board_size):
+        for row in range(BOARD.board_size):
             print_array[row + 1][0] = str(row)
 
-        for i in range(Board.board_size):
-            for j in range(Board.board_size):
+        for i in range(BOARD.board_size):
+            for j in range(BOARD.board_size):
                 if (i, j) in self.root.children:
                     visited_times = float(self.root.children[(i, j)].visited_times)
                     print_array[i + 1][j + 1] = "{0:.1f}%".format(action_probs[i][j] * 100) + "|" + str(
                         int(visited_times))
 
-        for i in range(Board.board_size + 1):
-            for j in range(Board.board_size + 1):
+        for i in range(BOARD.board_size + 1):
+            for j in range(BOARD.board_size + 1):
                 print("{:<15}".format(print_array[i][j]), end="")
             print("")
         print("----------------------------")

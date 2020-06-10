@@ -44,12 +44,12 @@ app.run(debug=True)  # para que al hacer cambio se actualice la pag solo
 """
 
 from flask import Blueprint, redirect, render_template, request, jsonify, url_for
-from Gomoku.Player import IA_MCTS
-from Gomoku.Player import IA_MCTS_Net
-from Gomoku.Web import web_select
+from Player.IA_MCTS import IA_MCTS
+from Player.IA_MCTS_Net import IA_MCTS_Net
+from Web.web_select import web_select
 
-from Gomoku.Player import Human
-from Gomoku.IA.Network.PolicyValueNet_from_junxiaosong import PolicyValueNet_from_junxiaosong
+from Player.Human import Human
+from IA.Network.PolicyValueNet_from_junxiaosong import PolicyValueNet_from_junxiaosong
 
 model_select = [web_select(), web_select()]
 

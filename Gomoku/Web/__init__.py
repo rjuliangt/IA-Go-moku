@@ -9,8 +9,8 @@ def welcome():
     return render_template('welcome.html')
 
 
-from Gomoku.Web import web_configure
-from Gomoku.Web import web_start
+from Web import web_configure
+from Web import web_start
 
 app.register_blueprint(web_configure.bp)
 app.register_blueprint(web_start.bp)

@@ -1,4 +1,4 @@
-from Gomoku.IA.Network.Network import Network
+from IA.Network.Network import Network
 
 import numpy as np
 import tensorflow as tf
@@ -9,7 +9,8 @@ from tensorflow.keras import optimizers
 from tensorflow.keras import regularizers
 import tensorflow.keras.backend as K
 
-from Gomoku.Function import get_data_augmentation
+import Game.Board as BOARD
+from Function import get_data_augmentation
 
 tf.compat.v1.disable_eager_execution()
 
@@ -25,7 +26,7 @@ def data_augmentation_new(x_label, y_label):
     for board_input, action_probs, value in zip(x_label, all_action_probs, values):
         for i in [0, 1, 2, 3]:
             new_board_input = np.array([np.rot90(one_board_input, i) for one_board_input in board_input])
-            new_action_probs = np.rot90(np.flipud(action_probs.reshape(Board.board_size, Board.board_size)), i)
+            new_action_probs = np.rot90(np.flipud(action_probs.reshape(BOARD.board_size, BOARD.board_size)), i)
             extend_data.append((new_board_input,
                                 np.flipud(new_action_probs).flatten(),
                                 value))
@@ -56,7 +57,7 @@ def data_augmentation(x_label, y_label):
         extend_xlabel.extend(np.array([one_augmentation for one_augmentation in board_augmentation]))
 
     for action_probs in all_action_probs:
-        extend_action_probs = get_data_augmentation(action_probs.reshape(Board.board_size, Board.board_size),
+        extend_action_probs = get_data_augmentation(action_probs.reshape(BOARD.board_size, BOARD.board_size),
                                                     operation=lambda a: a.flatten())
         extend_ylabel_action_probs.extend(extend_action_probs)
 
@@ -92,7 +93,7 @@ class PolicyValueNet_from_junxiaosong(Network):
 
     def create_net(self):
 
-        net = input_net = Input((4, Board.board_size, Board.board_size))
+        net = input_net = Input((4, BOARD.board_size, BOARD.board_size))
         net = layers.Conv2D(filters=32, kernel_size=(3, 3), padding="same", data_format="channels_last",
                             activation="relu", kernel_regularizer=regularizers.l2(self.l2_const))(net)
         net = layers.Conv2D(filters=64, kernel_size=(3, 3), padding="same", data_format="channels_last",
@@ -103,7 +104,7 @@ class PolicyValueNet_from_junxiaosong(Network):
         policy_net = layers.Conv2D(filters=4, kernel_size=(1, 1), data_format="channels_last",
                                    activation="relu", kernel_regularizer=regularizers.l2(self.l2_const))(net)
         policy_net = layers.Flatten()(policy_net)
-        policy_net = layers.Dense(Board.board_size * Board.board_size, activation="softmax",
+        policy_net = layers.Dense(BOARD.board_size * BOARD.board_size, activation="softmax",
                                   kernel_regularizer=regularizers.l2(self.l2_const))(policy_net)
 
         value_net = layers.Conv2D(filters=2, kernel_size=(1, 1), data_format="channels_last",
@@ -122,13 +123,13 @@ class PolicyValueNet_from_junxiaosong(Network):
         :param board:
         :return:
         """
-        x_label = np.zeros((4, Board.board_size, Board.board_size))
+        x_label = np.zeros((4, BOARD.board_size, BOARD.board_size))
         x_label[0][board.board == board.current_player] = 1
         x_label[1][board.board == -board.current_player] = 1
         if board.last_action is not None:
             x_label[2][board.last_action[0], board.last_action[1]] = 1
 
-        if board.current_player == Board.start_player:
+        if board.current_player == BOARD.start_player:
             x_label[3][:, :] = 1
 
         flipped_x_label = []
@@ -153,7 +154,7 @@ class PolicyValueNet_from_junxiaosong(Network):
 
     def predict(self, board):
         board_input = self.board_to_xlabel(board)
-        board_input = board_input.reshape((-1, 4, Board.board_size, Board.board_size))
+        board_input = board_input.reshape((-1, 4, BOARD.board_size, BOARD.board_size))
 
         if self.is_in_thread:
             with self.session.graph.as_default():
@@ -163,7 +164,7 @@ class PolicyValueNet_from_junxiaosong(Network):
             probs, value = self.model.predict_on_batch(board_input)
 
         probs = np.array(probs)
-        probs = probs.reshape((Board.board_size, Board.board_size))
+        probs = probs.reshape((BOARD.board_size, BOARD.board_size))
 
         action_probs = []
         for available_action in board.available_actions:

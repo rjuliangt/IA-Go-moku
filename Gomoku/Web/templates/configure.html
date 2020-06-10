@@ -1,7 +1,11 @@
 {% extends 'welcome.html' %}
+{% block head %}
+    <script src="{{ url_for('static', filename='js/configure.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/configure.css') }}">
+{% endblock %}
 {% block body %}
     <div style="text-align: center;">
-        <h1>Welcome to Gomoku AI.</h1><br>
+        <h1>Welcome to Omega Gomoku AI.</h1><br>
         {% macro rows(section) %}
             <div id="select{{ section }}-1">
                 <h4 id="select{{ section }}-1-title">
@@ -72,3 +76,4 @@
 
     </div>
 {% endblock %}
+

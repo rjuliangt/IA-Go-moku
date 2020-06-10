@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico')}}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
     <link rel="stylesheet" href="{{ url_for('static', filename='css/allstyle.css')}}">
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
@@ -40,6 +42,5 @@
         <a href="configure">Let's Start.</a>
     </div>
 {% endblock %}
-
 </body>
 </html>

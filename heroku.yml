@@ -2,5 +2,5 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: gunicorn --pythonpath app Web
+  web: gunicorn --pythonpath app Web:init
 

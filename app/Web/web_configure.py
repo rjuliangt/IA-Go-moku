@@ -109,7 +109,9 @@ def get_models():
         res = model_select[curr_player].all_model_name
         return jsonify(res)
 
-
+@bp.route("/rules", methods=["GET"])
+def get_rules():
+    return render_template('rules.html')
 @bp.route("/records", methods=['POST'])
 def get_records():
     value = request.get_json()['model']

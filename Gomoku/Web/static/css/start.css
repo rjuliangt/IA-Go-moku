@@ -1,23 +1,22 @@
 
 #board {
     background: burlywood;
+    background: -webkit-linear-gradient(to right, #859398, #283048);
     border-radius: 5px;
 }
 
 #player1-div {
     float: left;
-    width: 30%;
-    margin-left: 15%;
+    margin-left: 22%;
     margin-right: 5%;
     text-align: center;
     background: white;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 #player2-div {
     float: left;
-    width: 30%;
-    margin-left: 5%;
+    margin-left: 22%;
     margin-right: 15%;
     text-align: center;
     background: white;

@@ -36,8 +36,8 @@
 </nav>
     <div class="container mar-top">
     <div class="row justify-content-center ">
-        <div class="col-sm-6 " >
-            <div id="board-div" style="height: {{ board_size*40 }}px">
+        <div class="col-sm-9 " >
+            <div class="table table-bordered table-sm table-dark" id="board-div" style="height: {{ board_size*40 }}px">
                 <canvas id="board" width="{{ board_size*40 }}px" height="{{ board_size*40 }}px">
                     canvas </canvas>
                 <canvas id="transparent-board" width="{{ board_size*40 }}px" height="{{ board_size*40 }}px"
@@ -55,11 +55,12 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <p class="text-white text-left">
-                        <br> Usted tiene definida la ficha X
-                    </p>
+                    <button type="button" class="btn btn-primary">Empezar</button>
+                    <button type="button" class="btn btn-danger" style="margin-left: 10px">Reiniciar</button>
                 </div>
-            </div><br><br>
+            </div>
+            <br>
+            <br>
             <div class="row">
                 <div class="col-sm-6">
                     <h5 class="text-white text-left text-success"><strong>Jugador:</strong></h5>
@@ -76,10 +77,12 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="container">
                     <a href="{{ url_for('configure.configure') }}">
-                        <input type="button" value="Back"></a>
-                    <input id="start-button" type="button" value=" Start" onclick="start_game()">
+                        <input class="btn btn-primary" type="button" value="Back"></a>
+                    <input class="btn btn-danger" id="start-button" type="button" value=" Start" onclick="start_game()">
+                </div>
+                <div class="col-sm-12">
                     <div id="player1-div">
                         <h4>Black: {{ player1_name }}</h4>
                         <p id="player1-desc">
@@ -89,6 +92,8 @@
                         </p>
                         <h4 id="player1-running">running...</h4>
                     </div>
+                </div>
+                <div class="col-sm-12">
                     <div id="player2-div">
                         <h4>White: {{ player2_name }}</h4>
                         <p id="player2-desc">

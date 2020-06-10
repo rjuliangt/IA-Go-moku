@@ -6,20 +6,12 @@
 }
 
 #player1-div {
-    float: left;
-    width: inherit;
-    margin-left: 0;
-    margin-right: 0;
     text-align: center;
     background: white;
     border-radius: 15px;
 }
 
 #player2-div {
-    float: left;
-    width: inherit;
-    margin-left: 0;
-    margin-right: 0;
     text-align: center;
     background: white;
     border-radius: 15px;

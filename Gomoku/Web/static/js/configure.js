@@ -99,7 +99,7 @@ function selected(section, row, value) {
             break;
         case 4:
             enable("select" + section + "-5", "select" + section + "-5-input-1");
-            document.getElementById("select" + section + "-5").innerHTML = "<h4>加载中... Loading...</h4>";
+            document.getElementById("select" + section + "-5").innerHTML = "<h4>Loading...</h4>";
             request("/configure/models", {"player" : section - 1, "network" : value}, function (responseText) {
                 let arr = JSON.parse(responseText);
                 document.getElementById("select" + section + "-5").innerHTML = select_row5_html(section, arr);
@@ -108,7 +108,7 @@ function selected(section, row, value) {
             break;
         case 5:
             enable("select" + section + "-6", "select" + section + "-6-input-1");
-            document.getElementById("select" + section + "-6").innerHTML = "<h4>加载中... Loading...</h4>";
+            document.getElementById("select" + section + "-6").innerHTML = "<h4>Loading...</h4>";
             request("/configure/records", {"player" : section - 1, "model" : value - 1}, function (responseText) {
                 let arr = JSON.parse(responseText);
                 document.getElementById("select" + section + "-6").innerHTML = select_row6_html(section, arr);
